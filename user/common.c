@@ -2,7 +2,6 @@
 
 #include "cw32f003_rcc.h"
 #include "timer.h"
-#include "debug.h"
 
 static uint8_t pc1_state = 0;
 

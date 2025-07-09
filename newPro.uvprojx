@@ -395,11 +395,6 @@
               <FilePath>.\user\common.c</FilePath>
             </File>
             <File>
-              <FileName>debug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\debug.c</FilePath>
-            </File>
-            <File>
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\timer.c</FilePath>

@@ -103,4 +103,6 @@ add_executable(saiGeNew
         user/common.h
         user/timer.c
         user/timer.h
-        main.c)
+        main.c
+        user/deubg.c
+        user/deubg.h)

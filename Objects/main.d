@@ -10,9 +10,6 @@
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\string.h
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stddef.h
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\assert.h
-.\objects\main.o: .\user\debug.h
-.\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdio.h
-.\objects\main.o: .\Libraries\inc\type.h
 .\objects\main.o: .\user\timer.h
 .\objects\main.o: .\user\common.h
 .\objects\main.o: .\Libraries\inc\cw32f003_gpio.h
