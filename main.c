@@ -1,13 +1,10 @@
 #include "cw32f003.h"
-#include "cw32f003_rcc.h"
-#include "debug.h"
 #include "timer.h"
 #include "common.h"
 
 int main(void)
 {
     SystemInit();
-    Delay_Init();
     gpio_init();
     timer_init();
 
@@ -17,4 +14,5 @@ int main(void)
         nfc_task();
         acc_task();
         onewire_task();
-    }}
+    }
+}

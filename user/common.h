@@ -18,8 +18,8 @@
 #define ACC_DET_PORT    CW_GPIOA
 #define ACC_DET_PIN     GPIO_PIN_7
 
-#define PC1_PORT        CW_GPIOC
-#define PC1_PIN         GPIO_PIN_1
+#define ACC_OUT_PORT        CW_GPIOC
+#define ACC_OUT_PIN         GPIO_PIN_1
 
 #define EN485_TX_PORT   CW_GPIOA
 #define EN485_TX_PIN    GPIO_PIN_1

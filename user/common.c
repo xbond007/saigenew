@@ -1,4 +1,6 @@
 #include "common.h"
+
+#include "cw32f003_rcc.h"
 #include "timer.h"
 #include "debug.h"
 
@@ -23,8 +25,8 @@ void gpio_init(void)
     init.Pins = ONEWIRE_PIN;
     GPIO_Init(ONEWIRE_PORT, &init);
 
-    init.Pins = PC1_PIN;
-    GPIO_Init(PC1_PORT, &init);
+    init.Pins = ACC_DET_PIN;
+    GPIO_Init(ACC_OUT_PORT, &init);
 
     init.Pins = EN485_TX_PIN;
     GPIO_Init(EN485_TX_PORT, &init);
@@ -42,7 +44,7 @@ void gpio_init(void)
 
 static void onewire_send_bit(uint8_t bit)
 {
-    GPIO_WritePin(ONEWIRE_PORT, ONEWIRE_PIN, GPIO_Pin_SET);
+    GPIO_WritePin(ONEWIRE_PORT, ONEWIRE_PIN, GPIO_Pin_SET);/**/
     if (bit) {
         Delay_Us(60);
         GPIO_WritePin(ONEWIRE_PORT, ONEWIRE_PIN, GPIO_Pin_RESET);
@@ -101,11 +103,11 @@ void nfc_task(void)
 void acc_task(void)
 {
     if (pc1_state) {
-        GPIO_WritePin(PC1_PORT, PC1_PIN, GPIO_Pin_SET);
+        GPIO_WritePin(ACC_OUT_PORT, ACC_OUT_PIN, GPIO_Pin_SET);
         pc1_state = 0;
     } else {
         if (GPIO_ReadPin(ACC_DET_PORT, ACC_DET_PIN) == GPIO_Pin_SET) {
-            GPIO_WritePin(PC1_PORT, PC1_PIN, GPIO_Pin_RESET);
+            GPIO_WritePin(ACC_OUT_PORT, ACC_OUT_PIN, GPIO_Pin_RESET);
         }
     }
 }
