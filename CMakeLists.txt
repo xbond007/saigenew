@@ -1,0 +1,108 @@
+cmake_minimum_required(VERSION 3.31)
+project(saiGeNew C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(.cmsis)
+include_directories(.cmsis/include)
+include_directories(core)
+include_directories(Libraries/inc)
+include_directories(RTE)
+include_directories(RTE/_CW32F003)
+include_directories(RTT)
+include_directories(user)
+include_directories("D:/biancheng/Keil_v5/ARM/Ac5/include")
+
+add_executable(saiGeNew
+        .cmsis/include/cachel1_armv7.h
+        .cmsis/include/cmsis_armcc.h
+        .cmsis/include/cmsis_armclang.h
+        .cmsis/include/cmsis_armclang_ltm.h
+        .cmsis/include/cmsis_compiler.h
+        .cmsis/include/cmsis_gcc.h
+        .cmsis/include/cmsis_iccarm.h
+        .cmsis/include/cmsis_version.h
+        .cmsis/include/core_armv81mml.h
+        .cmsis/include/core_armv8mbl.h
+        .cmsis/include/core_armv8mml.h
+        .cmsis/include/core_cm0.h
+        .cmsis/include/core_cm0plus.h
+        .cmsis/include/core_cm1.h
+        .cmsis/include/core_cm23.h
+        .cmsis/include/core_cm3.h
+        .cmsis/include/core_cm33.h
+        .cmsis/include/core_cm35p.h
+        .cmsis/include/core_cm4.h
+        .cmsis/include/core_cm55.h
+        .cmsis/include/core_cm7.h
+        .cmsis/include/core_cm85.h
+        .cmsis/include/core_sc000.h
+        .cmsis/include/core_sc300.h
+        .cmsis/include/core_starmc1.h
+        .cmsis/include/mpu_armv7.h
+        .cmsis/include/mpu_armv8.h
+        .cmsis/include/pac_armv81.h
+        .cmsis/include/pmu_armv8.h
+        .cmsis/include/tz_context.h
+        core/cw32f003.h
+        core/interrupts_cw32f003.c
+        core/interrupts_cw32f003.h
+        Libraries/inc/base_types.h
+        Libraries/inc/cw32f003.h
+        Libraries/inc/cw32f003_adc.h
+        Libraries/inc/cw32f003_atim.h
+        Libraries/inc/cw32f003_awt.h
+        Libraries/inc/cw32f003_btim.h
+        Libraries/inc/cw32f003_crc.h
+        Libraries/inc/cw32f003_debug.h
+        Libraries/inc/cw32f003_digitalsign.h
+        Libraries/inc/cw32f003_flash.h
+        Libraries/inc/cw32f003_gpio.h
+        Libraries/inc/cw32f003_gtim.h
+        Libraries/inc/cw32f003_i2c.h
+        Libraries/inc/cw32f003_iwdt.h
+        Libraries/inc/cw32f003_lvd.h
+        Libraries/inc/cw32f003_pwr.h
+        Libraries/inc/cw32f003_ram.h
+        Libraries/inc/cw32f003_rcc.h
+        Libraries/inc/cw32f003_spi.h
+        Libraries/inc/cw32f003_systick.h
+        Libraries/inc/cw32f003_uart.h
+        Libraries/inc/cw32f003_vc.h
+        Libraries/inc/cw32f003_wwdt.h
+        Libraries/inc/system_cw32f003.h
+        Libraries/inc/type.h
+        Libraries/src/cw32f003_adc.c
+        Libraries/src/cw32f003_atim.c
+        Libraries/src/cw32f003_awt.c
+        Libraries/src/cw32f003_btim.c
+        Libraries/src/cw32f003_crc.c
+        Libraries/src/cw32f003_debug.c
+        Libraries/src/cw32f003_digitalsign.c
+        Libraries/src/cw32f003_flash.c
+        Libraries/src/cw32f003_gpio.c
+        Libraries/src/cw32f003_gtim.c
+        Libraries/src/cw32f003_i2c.c
+        Libraries/src/cw32f003_iwdt.c
+        Libraries/src/cw32f003_lvd.c
+        Libraries/src/cw32f003_pwr.c
+        Libraries/src/cw32f003_ram.c
+        Libraries/src/cw32f003_rcc.c
+        Libraries/src/cw32f003_spi.c
+        Libraries/src/cw32f003_systick.c
+        Libraries/src/cw32f003_uart.c
+        Libraries/src/cw32f003_vc.c
+        Libraries/src/cw32f003_wwdt.c
+        Libraries/src/system_cw32f003.c
+        RTE/_CW32F003/RTE_Components.h
+        RTT/SEGGER_RTT.c
+        RTT/SEGGER_RTT.h
+        RTT/SEGGER_RTT_Conf.h
+        RTT/SEGGER_RTT_printf.c
+        user/common.c
+        user/common.h
+        user/debug.c
+        user/debug.h
+        user/timer.c
+        user/timer.h
+        main.c)

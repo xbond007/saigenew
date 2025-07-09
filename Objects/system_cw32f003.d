@@ -1,0 +1,13 @@
+.\objects\system_cw32f003.o: Libraries\src\system_cw32f003.c
+.\objects\system_cw32f003.o: .\Libraries\inc\base_types.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\string.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stddef.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdint.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\assert.h
+.\objects\system_cw32f003.o: .\Libraries\inc\cw32f003.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0plus.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\system_cw32f003.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\system_cw32f003.o: .\Libraries\inc\system_cw32f003.h
+.\objects\system_cw32f003.o: .\Libraries\inc\cw32f003_rcc.h

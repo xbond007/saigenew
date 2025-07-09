@@ -1,0 +1,14 @@
+.\objects\cw32f003_i2c.o: Libraries\src\cw32f003_i2c.c
+.\objects\cw32f003_i2c.o: .\Libraries\inc\cw32f003_i2c.h
+.\objects\cw32f003_i2c.o: .\Libraries\inc\cw32f003.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0plus.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdint.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\cw32f003_i2c.o: .\Libraries\inc\system_cw32f003.h
+.\objects\cw32f003_i2c.o: .\Libraries\inc\base_types.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\string.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stddef.h
+.\objects\cw32f003_i2c.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\assert.h
+.\objects\cw32f003_i2c.o: .\Libraries\inc\cw32f003_rcc.h
