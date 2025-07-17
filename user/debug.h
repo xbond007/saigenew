@@ -8,6 +8,7 @@
 
 #include "cw32f003.h"
 #include "stdio.h"
+#include "type.h"
 
 /* GPIO Bit-Banding Macro Definition */
 #define BITBAND(adr, number)  ((adr & 0xF0000000)+0x2000000+((adr &0xFFFFF)<<5)+(number<<2))
@@ -47,11 +48,9 @@
 #ifndef DEBUG
 #define DEBUG   DEBUG_UART1
 #endif
-#include "type.h"
 void Delay_Init(void);
 void Delay_Us(uint32_t n);
 void Delay_Ms(uint16_t n);
-void USART_Printf_Init(uint32_t baudrate);
 
 #ifdef __cplusplus
 }

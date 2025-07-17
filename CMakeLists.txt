@@ -104,5 +104,7 @@ add_executable(saiGeNew
         user/timer.c
         user/timer.h
         main.c
-        user/deubg.c
-        user/deubg.h)
+        user/debug.c
+        user/debug.h
+        user/onewire.c
+        user/onewire.h)

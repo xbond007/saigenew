@@ -13,3 +13,6 @@
 .\objects\main.o: .\user\timer.h
 .\objects\main.o: .\user\common.h
 .\objects\main.o: .\Libraries\inc\cw32f003_gpio.h
+.\objects\main.o: .\user\onewire.h
+.\objects\main.o: .\Libraries\inc\cw32f003_btim.h
+.\objects\main.o: .\user\uart.h
