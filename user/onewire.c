@@ -12,9 +12,8 @@ static uint8_t yxt_sending    = 0; // 是否在发送中标志
 static uint8_t bit_timer   = 0; // 单 bit 时序控制器
 static uint8_t current_bit = 0; // 当前 bit 电平值
 
-static uint8_t seq_l = 0; // 流水号低字节（递增）
-static uint8_t seq_h = 0; // 流水号高字节（递增）
-
+static uint8_t seq_l           = 0;   // 流水号低字节（递增）
+static uint8_t seq_h           = 0;   // 流水号高字节（递增）
 static YXT_Status_t yxt_status = {0}; // 当前状态缓存（由外部设置）
 
 // 发送状态：同步码→数据→空闲
@@ -23,6 +22,10 @@ typedef enum {
     YXT_STATE_DATA, // 发送数据位
     YXT_STATE_IDLE  // 空闲状态（>40ms低电平）
 } YXT_State;
+
+// 修正状态机和时序参数
+static YXT_State yxt_state = YXT_STATE_SYNC;
+static uint16_t timer      = 0; // 0.5ms
 
 // 设置 GPIOB.2 为高电平
 static inline void YXT_Out_High(void)
@@ -68,8 +71,8 @@ void yxt_encode_frame(void)
 
     pulse = yxt_calc_pulse(seq_l, seq_h);
 
-    yxt_data[0] = 0x08; // 固定设备号
-    yxt_data[1] = seq_l;
+    yxt_data[0]  = 0x08; // 固定设备号
+    yxt_data[1]  = seq_l;
     yxt_data[2]  = ((seq_h & 0x0F) << 4) | (yxt_status.status1 & 0x0F);
     yxt_data[3]  = yxt_status.status2 + pulse;
     yxt_data[4]  = yxt_status.status3 + pulse;
@@ -84,46 +87,101 @@ void yxt_encode_frame(void)
     yxt_data[11] = checksum; // 异或校验
 }
 
-// 每 1ms 调用一次，用于推进一位 bit 的输出
-void onewire_task(void)
+void onewire_fixed_task(void)
 {
-    if (!yxt_sending) return;
+    switch (yxt_state) {
+        case YXT_STATE_SYNC:
+            if (timer < 60) { // 926Tosc 低电平  60 Tosc试试
+                YXT_Out_Low();
+            } else if (timer < 60 + 32) { // 32Tosc 高电平
+                YXT_Out_High();
+            }
+            timer++;
+            if (timer >= 60 + 32) {
+                timer          = 0;
+                yxt_state      = YXT_STATE_DATA;
+                yxt_bit_index  = 0;
+                yxt_byte_index = 0;
+            }
+            break;
+        case YXT_STATE_DATA: {
+            uint8_t byte         = yxt_data[yxt_byte_index];
+            uint8_t current_bit  = (byte >> (7 - yxt_bit_index)) & 0x01;
+            uint8_t bit_complete = 0;
 
-    uint8_t byte = yxt_data[yxt_byte_index];
-    current_bit  = (byte >> (7 - yxt_bit_index)) & 0x01;
-    bit_timer++;
+            if (current_bit) {
+                // 逻辑1：低 0.5ms（5次） → 高 1.0ms（10次）
+                if (timer < 5)
+                    YXT_Out_Low();
+                else if (timer < 15)
+                    YXT_Out_High();
+                else
+                    bit_complete = 1;
+            } else {
+                // 逻辑0：低 1.0ms（10次） → 高 0.5ms（5次）
+                if (timer < 10)
+                    YXT_Out_Low();
+                else if (timer < 15)
+                    YXT_Out_High();
+                else
+                    bit_complete = 1;
+            }
 
-    if (current_bit) {
-        // 发送 1：低0.5ms + 高1ms
-        if (bit_timer == 1)
-            YXT_Out_Low();
-        else if (bit_timer == 2)
-            YXT_Out_High();
-        else if (bit_timer == 3) {
-            bit_timer = 0;
-            yxt_bit_index++;
+            if (bit_complete) {
+                // SEGGER_RTT_printf(0, "[BIT] byte_idx=%d bit_idx=%d val=%d\n", yxt_byte_index, yxt_bit_index, current_bit);
+                timer = 0;
+                yxt_bit_index++;
+                if (yxt_bit_index >= 8) {
+                    // SEGGER_RTT_printf(0, "[BYTE] byte_idx=%d val=0x%02X\n", yxt_byte_index, byte);
+                    yxt_bit_index = 0;
+                    yxt_byte_index++;
+                    if (yxt_byte_index >= YXT_FRAME_LEN) {
+                        // SEGGER_RTT_printf(0, "[FRAME] all bytes sent\n");
+                        yxt_byte_index = 0;
+                        yxt_state      = YXT_STATE_IDLE;
+                        timer          = 0;
+                        YXT_Out_Low();
+
+                        YXT_Status_t s = {
+                            .status1  = 0x02, // +P档
+                            .status2  = 0x00,
+                            .status3  = 0x00,
+                            .status4  = 0x00,
+                            .status5  = 0x1F, // 电流值
+                            .speed    = 0x00, // 小速度值
+                            .reserved = 0x00,
+                            .voltage  = 0x20 //
+                        };
+                        yxt_update_status(&s);
+                        yxt_encode_frame();
+                    }
+                }
+            } else {
+                timer++;
+            }
+            break;
         }
-    } else {
-        // 发送 0：低1ms + 高0.5ms
-        if (bit_timer == 1 || bit_timer == 2)
-            YXT_Out_Low();
-        else if (bit_timer == 3)
-            YXT_Out_High();
-        else if (bit_timer == 4) {
-            bit_timer = 0;
-            yxt_bit_index++;
-        }
+
+        case YXT_STATE_IDLE:
+            if (timer >= 50) { // 40ms idle time (100us * 400 = 40ms)
+                timer     = 0;
+                yxt_state = YXT_STATE_SYNC;
+                // SEGGER_RTT_printf(0, "[IDLE->SYNC]\n");
+            } else {
+                timer++;
+            }
+            break;
     }
 
-    if (yxt_bit_index >= 8) {
-        yxt_bit_index = 0;
-        yxt_byte_index++;
-        if (yxt_byte_index >= YXT_FRAME_LEN) {
-            yxt_byte_index = 0;
-            bit_timer      = 0;
-            yxt_encode_frame(); // 自动生成下一帧
-        }
-    }
+    // 打印新帧内容
+    // if (yxt_state == YXT_STATE_SYNC && timer == 0) {
+    //     SEGGER_RTT_printf(0, "[FRAME DATA] ");
+    //     int i;
+    //     for (i = 0; i < YXT_FRAME_LEN; i++) {
+    //         SEGGER_RTT_printf(0, "%02X ", yxt_data[i]);
+    //     }
+    //     SEGGER_RTT_printf(0, "\n");
+    // }
 }
 
 // 开始一线通发送流程
@@ -147,113 +205,76 @@ void yxt_stop_send(void)
     YXT_Out_Low();
 }
 
-// 修正状态机和时序参数
-static YXT_State yxt_state = YXT_STATE_SYNC;
-static uint16_t timer      = 0; // 1ms/次
-
-void onewire_fixed_task(void)
+void onewire_fixed_task_singleframe(void)
 {
-    switch (yxt_state) {
+    static const uint8_t fixed_frame[YXT_FRAME_LEN] = {
+        0x08, 0x61, 0x00, 0x00, 0x00, 0x00,
+        0x1F, 0x00, 0x00, 0xE3, 0x02, 0x97};
+    static YXT_State state = YXT_STATE_SYNC;
+    switch (state) {
         case YXT_STATE_SYNC:
-            YXT_Out_Low();
+            // 926 463  60 50 200us
+            if (timer < 926) {
+                YXT_Out_Low();
+            } else if (timer < 926 + 32) {
+                YXT_Out_High();
+            }
             timer++;
-            if (timer >= 2) { // 2ms sync code completed
+            if (timer >= 926 + 32) {
                 timer          = 0;
-                yxt_state      = YXT_STATE_DATA;
-                yxt_bit_index  = 0;
                 yxt_byte_index = 0;
-                SEGGER_RTT_printf(0, "Enter data transmission state\n"); // Debug info
+                yxt_bit_index  = 0;
+                state          = YXT_STATE_DATA;
             }
             break;
 
         case YXT_STATE_DATA: {
-            uint8_t byte         = yxt_data[yxt_byte_index];
+            uint8_t byte         = fixed_frame[yxt_byte_index];
             uint8_t current_bit  = (byte >> (7 - yxt_bit_index)) & 0x01;
-            uint8_t bit_complete = 0; // Mark if current bit transmission is complete
+            uint8_t bit_complete = 0;
 
             if (current_bit) {
-                // Logic 1: Low for 40 counts (2ms) → High for 80 counts (4ms), total 120 counts
-                if (timer < 2) {
+                if (timer < 3)
                     YXT_Out_Low();
-                } else if (timer < 6) { // 40+80=120
+                else if (timer < 8)
                     YXT_Out_High();
-                } else {
-                    // Current bit transmission completed
+                else
                     bit_complete = 1;
-                }
             } else {
-                // Logic 0: Low for 80 counts (4ms) → High for 40 counts (2ms), total 120 counts
-                if (timer < 4) {
+                if (timer < 6)
                     YXT_Out_Low();
-                } else if (timer < 6) { // 80+40=120
+                else if (timer < 8)
                     YXT_Out_High();
-                } else {
-                    // Current bit transmission completed
+                else
                     bit_complete = 1;
-                }
             }
 
             if (bit_complete) {
                 timer = 0;
                 yxt_bit_index++;
-                // SEGGER_RTT_printf(0, "Bit transmission completed. Current byte: %d, Current bit: %d\n",   yxt_byte_index, yxt_bit_index); // Debug info
-            } else {
-                // Only increment timer when transmission not complete (critical fix)
-                timer++;
-            }
-
-            // Handle byte switch (after 8 bits transmitted)
-            if (yxt_bit_index >= 8) {
-                yxt_bit_index = 0;
-                yxt_byte_index++;
-                // SEGGER_RTT_printf(0, "Byte transmission completed. Current byte index: %d\n", yxt_byte_index); // Debug info
-
-                // Handle frame completion (all bytes transmitted)
-                if (yxt_byte_index >= YXT_FRAME_LEN) {
-                    yxt_byte_index = 0;
-                    yxt_state      = YXT_STATE_IDLE;
-                    timer          = 0;
-                    YXT_Out_Low();
-                    // SEGGER_RTT_printf(0, "Frame transmission completed. Entering idle state\n"); // Debug info
-
-                    // Update status and generate next frame (data will change here)
-                    static uint8_t counter = 0;
-                    YXT_Status_t s = {
-                        .status1  = 0x02, // +P档
-                        .status2  = 0x00, 
-                        .status3  = 0x00,
-                        .status4  = 0x00,
-                        .status5  = 0x1F, // 电流值
-                        .speed    = 0x00, // 小速度值
-                        .reserved = 0x00,
-                        .voltage  = 0x20 // 
-                    };
-
-                    yxt_update_status(&s);
-                    yxt_encode_frame(); // Generate new frame with updated data
+                if (yxt_bit_index >= 8) {
+                    yxt_bit_index = 0;
+                    yxt_byte_index++;
+                    if (yxt_byte_index >= YXT_FRAME_LEN) {
+                        yxt_byte_index = 0;
+                        state          = YXT_STATE_IDLE;
+                        timer          = 0;
+                        YXT_Out_Low();
+                    }
                 }
+            } else {
+                timer++;
             }
             break;
         }
 
         case YXT_STATE_IDLE:
-            if (timer >= 40) { // 40ms idle time
-                timer     = 0;
-                yxt_state = YXT_STATE_SYNC;
-                SEGGER_RTT_printf(0, "Idle period ended. Re-entering sync state\n"); // Debug info
+            if (timer >= 400) { // 40ms 400
+                timer = 0;
+                state = YXT_STATE_SYNC;
             } else {
                 timer++;
             }
             break;
-    }
-
-    // Print data only on state switch (reduce log noise)
-    if (yxt_state == YXT_STATE_SYNC && timer == 0) {
-        SEGGER_RTT_printf(0, "Sending new frame: ");
-        int i;
-        for (i = 0; i < YXT_FRAME_LEN; i++) {
-            SEGGER_RTT_printf(0, "%02X ", yxt_data[i]);
-        }
-        SEGGER_RTT_printf(0, "\n");
     }
 }

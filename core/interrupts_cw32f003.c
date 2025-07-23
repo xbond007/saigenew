@@ -284,22 +284,22 @@ void I2C_IRQHandler(void)
 /**
  * @brief This funcation handles UART1
  */
-void UART1_IRQHandler(void)
-{
-  /* USER CODE BEGIN */
-
-  /* USER CODE END */
-}
+// void UART1_IRQHandler(void)
+// {
+//   /* USER CODE BEGIN */
+//
+//   /* USER CODE END */
+// }
 
 /**
  * @brief This funcation handles UART2
  */
-void UART2_IRQHandler(void)
-{
-  /* USER CODE BEGIN */
-
-  /* USER CODE END */
-}
+// void UART2_IRQHandler(void)
+// {
+//   /* USER CODE BEGIN */
+//
+//   /* USER CODE END */
+// }
 
 
 /**

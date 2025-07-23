@@ -22,4 +22,5 @@ void yxt_start_send(void);
 void yxt_stop_send(void);
 void onewire_task(void);
 void onewire_fixed_task(void);
+void onewire_fixed_task_singleframe(void);
 #endif

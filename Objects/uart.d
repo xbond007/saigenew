@@ -15,3 +15,5 @@
 .\objects\uart.o: .\Libraries\inc\cw32f003_gpio.h
 .\objects\uart.o: user\common.h
 .\objects\uart.o: .\Libraries\inc\cw32f003_rcc.h
+.\objects\uart.o: .\RTT\SEGGER_RTT.h
+.\objects\uart.o: .\RTT\SEGGER_RTT_Conf.h

@@ -19,6 +19,5 @@
 .\objects\common.o: .\Libraries\inc\type.h
 .\objects\common.o: .\RTT\SEGGER_RTT.h
 .\objects\common.o: .\RTT\SEGGER_RTT_Conf.h
-.\objects\common.o: user\onewire.h
-.\objects\common.o: .\Libraries\inc\cw32f003_uart.h
 .\objects\common.o: .\Libraries\inc\cw32f003_btim.h
+.\objects\common.o: .\Libraries\inc\cw32f003_adc.h

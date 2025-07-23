@@ -5,9 +5,9 @@
 
 // 初始化串口 + 控制IO
 void uart1_init(void);
-
-void uart1_send485(uint8_t *data, uint8_t len);
-
-void send_test_command(void);
-
+void uart1_send485_irq(uint8_t *data, uint8_t len);
+// 数据分析函数
+void send_gear_p_command(void);
 #endif
+
+
