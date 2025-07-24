@@ -47,9 +47,7 @@ uint8_t acc_det_check_voltage(void);
 
 
 void gpio_init(void);
-void light_task(void);
 void abs_task(void);
-void onewire_task(void);
 void nfc_task(void);
 void acc_task(void);
 void user_tasks_50us(void);

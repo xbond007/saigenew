@@ -19,7 +19,7 @@ void BTIM3_Init_100us(void)
     BTIM_TimeBaseStructInit(&btim);
     btim.BTIM_Prescaler = BTIM_PRS_DIV16; // 8MHz / 16 = 500kHz
     btim.BTIM_Mode      = BTIM_Mode_TIMER;
-    btim.BTIM_Period    = 125;  //1
+    btim.BTIM_Period    = 125;  //125 × 2μs = 250μs = 0.25ms
     btim.BTIM_OPMode    = BTIM_OPMode_Repetitive;
 
     BTIM_TimeBaseInit(CW_BTIM3, &btim);
