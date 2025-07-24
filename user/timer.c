@@ -23,7 +23,7 @@ void BTIM3_Init_100us(void)
     btim.BTIM_OPMode    = BTIM_OPMode_Repetitive;
 
     BTIM_TimeBaseInit(CW_BTIM3, &btim);
-
+    NVIC_SetPriority(BTIM3_IRQn, 0); // 更高优先级
     BTIM_ITConfig(CW_BTIM3, BTIM_IT_OV, ENABLE);
     NVIC_EnableIRQ(BTIM3_IRQn);      // 开启中断
     BTIM_Cmd(CW_BTIM3, ENABLE);      // 启动定时器
@@ -40,7 +40,7 @@ void BTIM2_Init_20ms(void)
     btim.BTIM_OPMode    = BTIM_OPMode_Repetitive;
     BTIM_TimeBaseInit(CW_BTIM2, &btim);
     BTIM_ITConfig(CW_BTIM2, BTIM_IT_OV, ENABLE);
-
+    
     NVIC_SetPriority(BTIM3_IRQn, 1); // 更高优先级
     NVIC_EnableIRQ(BTIM2_IRQn); // 开启中断
     BTIM_Cmd(CW_BTIM2, ENABLE); // 启动定时器

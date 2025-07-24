@@ -153,7 +153,7 @@ void user_tasks_50us(void)
 
     tick_50us_counter++;
     nfc_task();
-    if (tick_50us_counter >= 15000) { // 15000 * 100us = 1.5秒
+    if (tick_50us_counter >= 15000) { // 15000 * 50us = 0.75秒
         tick_50us_counter = 0;
         acc_task();
     }
