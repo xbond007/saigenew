@@ -11,7 +11,7 @@ include_directories(RTE)
 include_directories(RTE/_CW32F003)
 include_directories(RTT)
 include_directories(user)
-include_directories("D:/biancheng/Keil_v5/ARM/Ac5/include")
+#include_directories("D:/biancheng/Keil_v5/ARM/Ac5/include")
 
 add_executable(saiGeNew
         .cmsis/include/cachel1_armv7.h
@@ -101,8 +101,10 @@ add_executable(saiGeNew
         RTT/SEGGER_RTT_printf.c
         user/common.c
         user/common.h
-        user/debug.c
-        user/debug.h
         user/timer.c
         user/timer.h
-        main.c)
+        main.c
+        user/debug.c
+        user/debug.h
+        user/onewire.c
+        user/onewire.h)

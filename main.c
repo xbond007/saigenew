@@ -1,124 +1,57 @@
-#include "cw32f003.h" // °üº¬Ğ¾Æ¬Í·ÎÄ¼ş
+#include "SEGGER_RTT.h"
+#include "cw32f003.h"
 #include "timer.h"
 #include "common.h"
-#include "SEGGER_RTT.h"
-#include "cw32f003_gpio.h"
-#include <stdarg.h>
+#include "onewire.h"
+#include "cw32f003_btim.h"
+#include "uart.h"
+#include "cw32f003_uart.h"
 
 
-// ³õÊ¼»¯ RTT ´òÓ¡½Ó¿Ú
-void segger_rtt_init(char *str)
-{
-    SEGGER_RTT_Init();
-    print_log(str); // ·â×°½Ó¿Ú£¬ÎŞĞèÌîĞ´ BUFFER_INDEX
-}
-
-// È«¾Ö±äÁ¿¶¨Òå
-extern uint8_t lock_answer, tx_over, rx_nub;
-uint8_t Com_Buffer[128];
-uint8_t Lock[10];
-uint8_t error, send_cmd, start_work = 0, step, start_state;
-uint16_t cout;
-uint16_t timebase[10];
-// ¼ÙÉè LOCK_T ÊÇÒ»¸ö×Ô¶¨ÒåÀàĞÍ£¬ÕâÀïÎ´¶¨Òå£¬±£ÁôÔ­Ñù
-typedef struct {
-    // ¿ÉÒÔÔÚÕâÀïÌí¼Ó¾ßÌå³ÉÔ±
-} LOCK_T;
-LOCK_T state;
-RCC_ClocksTypeDef RCC_Clocks;
-
-
-// ¶¨Òå EXTI_InitTypeDef ½á¹¹Ìå
-typedef struct {
-    uint32_t EXTI_Line;       // Íâ²¿ÖĞ¶ÏÏß
-    uint32_t EXTI_Mode;       // ÖĞ¶ÏÄ£Ê½£¨ÈçÖĞ¶Ï»òÊÂ¼ş£©
-    uint32_t EXTI_Trigger;    // ´¥·¢·½Ê½£¨ÈçÉÏÉıÑØ¡¢ÏÂ½µÑØµÈ£©
-    FunctionalState EXTI_LineCmd; // Ê¹ÄÜ»ò½ûÓÃÍâ²¿ÖĞ¶ÏÏß
-} EXTI_InitTypeDef;
-
-// ¶¨Òå NVIC_InitTypeDef ½á¹¹Ìå
-typedef struct {
-    uint8_t NVIC_IRQChannel;                   // ÖĞ¶ÏÍ¨µÀ
-    uint8_t NVIC_IRQChannelPreemptionPriority; // ÇÀÕ¼ÓÅÏÈ¼¶
-    uint8_t NVIC_IRQChannelSubPriority;        // ×ÓÓÅÏÈ¼¶
-    FunctionalState NVIC_IRQChannelCmd;        // Ê¹ÄÜ»ò½ûÓÃÖĞ¶ÏÍ¨µÀ
-} NVIC_InitTypeDef;
-
-
-
-// GPIO ³õÊ¼»¯º¯Êı
-void GPIO_Toggle_INIT(void)
-{
-    GPIO_InitTypeDef GPIO_InitStructure = {0};
-    EXTI_InitTypeDef EXTI_InitStruct    = {0};
-    NVIC_InitTypeDef NVIC_InitStruct    = {0};
-
-    // Ê¹ÄÜ GPIO Ê±ÖÓ
-    CW_SYSCTRL->AHBEN_f.GPIOA = 1;
-    CW_SYSCTRL->AHBEN_f.GPIOB = 1;
-    CW_SYSCTRL->AHBEN_f.GPIOC = 1;
-
-    // ³õÊ¼»¯ GPIOA
-    GPIO_InitStructure.Pins = GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_8;
-    GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_Init(CW_GPIOA, &GPIO_InitStructure);
-
-    // ³õÊ¼»¯ GPIOB
-    GPIO_InitStructure.Pins = GPIO_PIN_15;
-    GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_Init(CW_GPIOB, &GPIO_InitStructure);
-
-    // ³õÊ¼»¯ GPIOB ÊäÈëÄ£Ê½
-    GPIO_InitStructure.Pins = GPIO_PIN_9;
-    GPIO_InitStructure.Mode = GPIO_MODE_INPUT;
-    GPIO_Init(CW_GPIOB, &GPIO_InitStructure);
-
-    // ³õÊ¼»¯ GPIOA ÉÏÀ­ÊäÈëÄ£Ê½
-    GPIO_InitStructure.Pins = GPIO_PIN_3;
-    GPIO_InitStructure.Mode = GPIO_MODE_INPUT_PULLUP;
-    GPIO_Init(CW_GPIOA, &GPIO_InitStructure);
-
-    // ÅäÖÃÍâ²¿ÖĞ¶Ï
-    // ¼ÙÉèÕâÀïÓĞºÏÊÊµÄºê¶¨ÒåÀ´Ìæ´úÔ­ÓĞµÄ GPIO_EXTILineConfig
-    // Ô­´úÂëÖĞÊ¹ÓÃµÄÊÇ±ê×¼¿âº¯Êı£¬ÕâÀï¸ù¾İÏÖÓĞ´úÂëÎŞ·¨ÍêÈ«¶ÔÓ¦£¬±£Áô¸ÅÄî
-    // GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource3);
-    EXTI_InitStruct.Line    = EXTI_LINE_3;
-    EXTI_InitStruct.Mode    = EXTI_MODE_INTERRUPT;
-    EXTI_InitStruct.Trigger = EXTI_TRIGGER_FALLING;
-    EXTI_InitStruct.LineCmd = ENABLE;
-    // ¼ÙÉèÕâÀïÓĞºÏÊÊµÄ EXTI ³õÊ¼»¯º¯Êı£¬Ô­´úÂëÖĞÊ¹ÓÃµÄÊÇ±ê×¼¿âº¯Êı£¬ÕâÀï¸ù¾İÏÖÓĞ´úÂëÎŞ·¨ÍêÈ«¶ÔÓ¦£¬±£Áô¸ÅÄî
-    // EXTI_Init(&EXTI_InitStruct);
-
-    NVIC_InitStruct.IRQChannel         = EXTI3_IRQn;
-    NVIC_InitStruct.PreemptionPriority = 1;
-    NVIC_InitStruct.SubPriority        = 2;
-    NVIC_InitStruct.IRQChannelCmd      = ENABLE;
-    NVIC_Init(&NVIC_InitStruct);
-}
-
-// Íâ²¿ÖĞ¶Ï´¦Àíº¯Êı
-void EXTI3_IRQHandler()
-{
-    // ¼ÙÉèÕâÀïÓĞºÏÊÊµÄº¯ÊıÀ´»ñÈ¡ºÍÇå³ıÖĞ¶Ï±êÖ¾Î»£¬Ô­´úÂëÖĞÊ¹ÓÃµÄÊÇ±ê×¼¿âº¯Êı£¬ÕâÀï¸ù¾İÏÖÓĞ´úÂëÎŞ·¨ÍêÈ«¶ÔÓ¦£¬±£Áô¸ÅÄî
-    // if (EXTI_GetITStatus(EXTI_Line3) != RESET) {
-    //     EXTI_ClearITPendingBit(EXTI_Line3);
-    start_work = !start_work;
-    // }
-}
+extern uint8_t uart1_busy;     // å‘é€ä¸­æ ‡å¿—ä½
 
 int main(void)
 {
-    // ÏµÍ³³õÊ¼»¯
     SystemInit();
-
-    // ³õÊ¼»¯ RTT ´òÓ¡½Ó¿Ú
-    segger_rtt_init("System started!\r\n");
-
-    // ÍâÉè³õÊ¼»¯£¨ÀıÈçGPIO¡¢UARTµÈ£©
-    GPIO_Toggle_INIT();
-
-    // Ö÷Ñ­»·
+    systick_init();
+    gpio_init();
+    adc_init(); // æ·»åŠ ADCåˆå§‹åŒ–
+    uart1_init();
+    BTIM3_Init_100us(); // 100us
+    BTIM2_Init_20ms();   
+    
     while (1) {
-        // Ó¦ÓÃ³ÌĞò´úÂë
+        //
+    }
+}
+
+void SysTick_Handler(void)
+{
+    user_tasks_50us();
+}
+
+void BTIM3_IRQHandler(void)
+{
+    if (BTIM_GetITStatus(CW_BTIM3, BTIM_IT_OV) == SET) {
+        BTIM_ClearITPendingBit(CW_BTIM3, BTIM_IT_OV);
+        onewire_fixed_task_singleframe(); // å›ºå®šå‘é€
+    }
+}
+
+
+
+void BTIM2_IRQHandler(void)
+{
+    if (BTIM_GetITStatus(CW_BTIM2, BTIM_IT_OV) == SET) {
+        BTIM_ClearITPendingBit(CW_BTIM2, BTIM_IT_OV);
+
+        static uint16_t uart_counter = 0;
+        if (++uart_counter > 3) { // æ¯20ms Ã— 20 = 400mså‘é€ä¸€æ¬¡
+            uart_counter = 0;
+            if (!uart1_busy) {
+                send_gear_p_command();
+            }
+        }
+        
     }
 }

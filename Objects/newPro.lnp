@@ -1,5 +1,10 @@
 --cpu Cortex-M0+
 ".\objects\main.o"
+".\objects\common.o"
+".\objects\timer.o"
+".\objects\debug.o"
+".\objects\onewire.o"
+".\objects\uart.o"
 ".\objects\interrupts_cw32f003.o"
 ".\objects\startup_cw32f003.o"
 ".\objects\segger_rtt.o"

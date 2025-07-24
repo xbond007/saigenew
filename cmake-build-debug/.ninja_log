@@ -1,0 +1,23 @@
+# ninja log v6
+4	1758	7737416597389077	CMakeFiles/saiGeNew.dir/core/interrupts_cw32f003.c.obj	68f29023b08dec83
+588	2995	7737416603231677	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_debug.c.obj	93a726699513dfe2
+493	2448	7737416602282523	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_crc.c.obj	2ac05cc3cef765b
+893	2715	7737416606283107	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gpio.c.obj	64d2e0768254c82
+1200	3275	7737416609348826	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_iwdt.c.obj	ca4002b6f689384e
+1486	2802	7737416612214511	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_ram.c.obj	30c648229372be50
+985	3176	7737416607194491	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gtim.c.obj	7dfb1a053cb10289
+684	2892	7737416604194541	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_digitalsign.c.obj	5160bba4c32263d9
+780	3090	7737416605150295	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_flash.c.obj	7e51b46bf5c61e3b
+302	3273	7737416600366556	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_awt.c.obj	9e86c5aa72d8e8bf
+1090	3274	7737416608248271	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_i2c.c.obj	adc6a244663b318d
+402	3276	7737416601364551	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_btim.c.obj	6b736cb56933c62d
+181	3277	7737416599161011	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_atim.c.obj	ec679079e0a9e721
+1574	3278	7737416613096189	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_rcc.c.obj	701d8fdbf316cb50
+1668	3278	7737416614034230	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_spi.c.obj	d9e72e0169f8729c
+2997	3447	7737416627323677	CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT.c.obj	46ba891948c2b2d8
+1759	3554	7737416614940437	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_systick.c.obj	d1846307d71189cc
+2802	3567	7737416625373523	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_wwdt.c.obj	37aae56253ecaabd
+2892	3582	7737416626272958	CMakeFiles/saiGeNew.dir/Libraries/src/system_cw32f003.c.obj	f60134134826238e
+2449	3597	7737416621841592	CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_uart.c.obj	1424319cf532000b
+3090	3621	7737416628247309	CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT_printf.c.obj	feea894b6651a506
+3176	3682	7737416629108655	CMakeFiles/saiGeNew.dir/user/common.c.obj	1535a3295da5b088

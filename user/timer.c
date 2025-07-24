@@ -1,153 +1,47 @@
+// timer.c - 基于SysTick的定时与延时功能实现
+// 提供毫秒计时、延时等功能
 #include "timer.h"
-#include "common.h"
-uint32_t timetimes;
-extern uint8_t rx_nub, time_out;
-SystemTimer system_timer;
-
-void timerinit()
+#include "cw32f003.h"
+#include "cw32f003_btim.h"
+#include "cw32f003_rcc.h"
+void systick_init(void)
 {
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-    TIM_TimeBaseInitTypeDef TimStructInit;
-    NVIC_InitTypeDef TIMStrctInit;
-    TimStructInit.TIM_ClockDivision = 0;
-    TimStructInit.TIM_Prescaler     = 72;
-    TimStructInit.TIM_Period        = 50;
-    TimStructInit.TIM_CounterMode   = TIM_CounterMode_Up;
-    TIM_TimeBaseInit(TIM3, &TimStructInit);
-    TIM_Cmd(TIM3, ENABLE);
-    TIMStrctInit.NVIC_IRQChannel                   = TIM3_IRQn;
-    TIMStrctInit.NVIC_IRQChannelSubPriority        = 1;
-    TIMStrctInit.NVIC_IRQChannelPreemptionPriority = 0;
-    NVIC_Init(&TIMStrctInit);
-    TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-}
-volatile uint32_t SystemTicks   = 0; // ��ʱ��������
-volatile uint32_t SystemTickBak = 0;
-/*******************************************************
- * Function name : clock_time
- * Description   : ��ȡ��ǰʱ�Ӽ�����
- * Parameter     : void
- * Return        : void
- ********************************************************/
-uint32_t clock_time(void)
-{
-    // uint32_t cpu_stat = enter_critical();
-    SystemTickBak = SystemTicks;
-    // exit_critical(cpu_stat);
-    return SystemTickBak;
+    // 系统时钟为uint32_t SystemCoreClock = 8000000; 8000000 / 20000 = 400 /  8000000 ~= 50 us
+    SysTick_Config(SystemCoreClock / 20000);
 }
 
-/*******************************************************
- * Function name : Clock_Time_Add
- * Description   : ����������
- * Parameter     : void
- * Return        : void
- ********************************************************/
-void Clock_Time_Add(void)
+void BTIM3_Init_100us(void)
 {
-    // uint32_t cpu_stat = enter_critical();
-    SystemTicks++;
-    //	exit_critical(cpu_stat);
+    BTIM_TimeBaseInitTypeDef btim;
+
+    __RCC_BTIM_CLK_ENABLE(); // 开启 BTIM 时钟
+
+    BTIM_TimeBaseStructInit(&btim);
+    btim.BTIM_Prescaler = BTIM_PRS_DIV16; // 8MHz / 16 = 500kHz
+    btim.BTIM_Mode      = BTIM_Mode_TIMER;
+    btim.BTIM_Period    = 125;  //125 × 2μs = 250μs = 0.25ms
+    btim.BTIM_OPMode    = BTIM_OPMode_Repetitive;
+
+    BTIM_TimeBaseInit(CW_BTIM3, &btim);
+    NVIC_SetPriority(BTIM3_IRQn, 0); // 更高优先级
+    BTIM_ITConfig(CW_BTIM3, BTIM_IT_OV, ENABLE);
+    NVIC_EnableIRQ(BTIM3_IRQn);      // 开启中断
+    BTIM_Cmd(CW_BTIM3, ENABLE);      // 启动定时器
 }
-/*---------------------------------------------------------------------------*/
-/**
- * Set a timer.
- *
- * This function is used to set a timer for a time sometime in the
- * future. The function timer_expired() will evaluate to true after
- * the timer has expired.
- *
- * \param t A pointer to the timer
- * \param interval The interval before the timer expires.
- *
- */
-void timer_set(struct timer *t, clock_time_t interval)
+
+void BTIM2_Init_20ms(void)
 {
-    t->interval = (clock_time_t)interval;
-    t->start    = clock_time();
-}
-/*---------------------------------------------------------------------------*/
-/**
- * Reset the timer with the same interval.
- *
- * This function resets the timer with the same interval that was
- * given to the timer_set() function. The start point of the interval
- * is the exact time that the timer last expired. Therefore, this
- * function will cause the timer to be stable over time, unlike the
- * timer_rester() function.
- *
- * \param t A pointer to the timer.
- *
- * \sa timer_restart()
- */
-void timer_reset(struct timer *t)
-{
-    t->start += t->interval;
-}
-/*---------------------------------------------------------------------------*/
-/**
- * Restart the timer from the current point in time
- *
- * This function restarts a timer with the same interval that was
- * given to the timer_set() function. The timer will start at the
- * current time.
- *
- * \note A periodic timer will drift if this function is used to reset
- * it. For preioric timers, use the timer_reset() function instead.
- *
- * \param t A pointer to the timer.
- *
- * \sa timer_reset()
- */
-void timer_restart(struct timer *t)
-{
-    t->start = clock_time();
-}
-/*---------------------------------------------------------------------------*/
-/**
- * Check if a timer has expired.
- *
- * This function tests if a timer has expired and returns true or
- * false depending on its status.
- *
- * \param t A pointer to the timer
- *
- * \return Non-zero if the timer has expired, zero otherwise.
- *
- */
-char timer_expired(struct timer *t)
-{
-    return ((clock_time_t)(clock_time() - t->start) >= (clock_time_t)t->interval) ? 1 : 0;
-}
-/*---------------------------------------------------------------------------*/
-/**
- * @brief Gets a time from the timer setting time.
- * @param t A pointer to the timer
- * @return clock_time_t a time what you want
- */
-clock_time_t timer_GetCount(struct timer *t)
-{
-    return (clock_time_t)(clock_time() - t->start);
-}
-void system_timer_init(void)
-{
-    timer_set(&system_timer.task_10ms, CLOCK_MS * TASK_10MS_TIME);
-    timer_set(&system_timer.task_50ms, CLOCK_MS * TASK_50MS_TIME);
-    timer_set(&system_timer.task_100ms, CLOCK_MS * TASK_100MS_TIME);
-    timer_set(&system_timer.task_1s, CLOCK_MS * TASK_1S_TIME);
-    timer_set(&system_timer.task_500ms, CLOCK_MS * TASK_500MS_TIME);
-}
-u8 *yxt = 0;
-void TIM3_IRQHandler() // 50um
-{
-    if ((TIM_GetITStatus(TIM3, TIM_IT_Update)) != RESET) {
-        TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-        timetimes++;
-        yxt = alm_send(12);
-        com_task_50us();
-        if (timetimes > 20) {
-            timetimes = 0;
-            Clock_Time_Add();
-        }
-    }
+    BTIM_TimeBaseInitTypeDef btim;
+    __RCC_BTIM_CLK_ENABLE();
+    BTIM_TimeBaseStructInit(&btim);
+    btim.BTIM_Prescaler = BTIM_PRS_DIV16; // 8MHz / 16 = 500kHz
+    btim.BTIM_Mode      = BTIM_Mode_TIMER;
+    btim.BTIM_Period    = 10000; 
+    btim.BTIM_OPMode    = BTIM_OPMode_Repetitive;
+    BTIM_TimeBaseInit(CW_BTIM2, &btim);
+    BTIM_ITConfig(CW_BTIM2, BTIM_IT_OV, ENABLE);
+    
+    NVIC_SetPriority(BTIM3_IRQn, 1); // 更高优先级
+    NVIC_EnableIRQ(BTIM2_IRQn); // 开启中断
+    BTIM_Cmd(CW_BTIM2, ENABLE); // 启动定时器
 }

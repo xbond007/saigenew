@@ -1,0 +1,14 @@
+.\objects\onewire.o: user\onewire.c
+.\objects\onewire.o: user\onewire.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdint.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\string.h
+.\objects\onewire.o: .\Libraries\inc\cw32f003.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0plus.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\onewire.o: .\Libraries\inc\system_cw32f003.h
+.\objects\onewire.o: .\Libraries\inc\base_types.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stddef.h
+.\objects\onewire.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\assert.h
+.\objects\onewire.o: .\Libraries\inc\cw32f003_gpio.h

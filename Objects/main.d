@@ -1,4 +1,6 @@
 .\objects\main.o: main.c
+.\objects\main.o: .\RTT\SEGGER_RTT.h
+.\objects\main.o: .\RTT\SEGGER_RTT_Conf.h
 .\objects\main.o: .\Libraries\inc\cw32f003.h
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0plus.h
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdint.h
@@ -10,3 +12,10 @@
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\string.h
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stddef.h
 .\objects\main.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\assert.h
+.\objects\main.o: .\user\timer.h
+.\objects\main.o: .\user\common.h
+.\objects\main.o: .\Libraries\inc\cw32f003_gpio.h
+.\objects\main.o: .\user\onewire.h
+.\objects\main.o: .\Libraries\inc\cw32f003_btim.h
+.\objects\main.o: .\user\uart.h
+.\objects\main.o: .\Libraries\inc\cw32f003_uart.h

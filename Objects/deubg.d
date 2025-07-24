@@ -1,0 +1,17 @@
+.\objects\deubg.o: user\deubg.c
+.\objects\deubg.o: user\common.h
+.\objects\deubg.o: .\Libraries\inc\cw32f003.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0plus.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdint.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\deubg.o: .\Libraries\inc\system_cw32f003.h
+.\objects\deubg.o: .\Libraries\inc\base_types.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\string.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stddef.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\assert.h
+.\objects\deubg.o: .\Libraries\inc\cw32f003_gpio.h
+.\objects\deubg.o: user\deubg.h
+.\objects\deubg.o: D:\biancheng\Keil_v5\ARM\Ac5\Bin\..\include\stdio.h
+.\objects\deubg.o: .\Libraries\inc\type.h

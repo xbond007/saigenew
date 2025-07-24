@@ -52,205 +52,212 @@ build cmake_object_order_depends_target_saiGeNew: phony || .
 build CMakeFiles/saiGeNew.dir/core/interrupts_cw32f003.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/core/interrupts_cw32f003.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\core\interrupts_cw32f003.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\core
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_adc.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_adc.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_adc.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_atim.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_atim.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_atim.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_awt.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_awt.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_awt.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_btim.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_btim.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_btim.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_crc.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_crc.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_crc.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_debug.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_debug.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_debug.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_digitalsign.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_digitalsign.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_digitalsign.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_flash.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_flash.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_flash.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gpio.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_gpio.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_gpio.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gtim.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_gtim.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_gtim.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_i2c.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_i2c.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_i2c.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_iwdt.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_iwdt.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_iwdt.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_lvd.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_lvd.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_lvd.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_pwr.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_pwr.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_pwr.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_ram.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_ram.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_ram.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_rcc.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_rcc.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_rcc.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_spi.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_spi.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_spi.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_systick.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_systick.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_systick.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_uart.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_uart.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_uart.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_vc.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_vc.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_vc.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_wwdt.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/cw32f003_wwdt.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\cw32f003_wwdt.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/Libraries/src/system_cw32f003.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/src/system_cw32f003.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\Libraries\src\system_cw32f003.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\Libraries\src
 
 build CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/RTT/SEGGER_RTT.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\RTT\SEGGER_RTT.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\RTT
 
 build CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT_printf.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/RTT/SEGGER_RTT_printf.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\RTT\SEGGER_RTT_printf.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\RTT
 
 build CMakeFiles/saiGeNew.dir/user/common.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/user/common.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\user\common.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
-  OBJECT_DIR = CMakeFiles\saiGeNew.dir
-  OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\user
-
-build CMakeFiles/saiGeNew.dir/user/debug.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/user/debug.c || cmake_object_order_depends_target_saiGeNew
-  DEP_FILE = CMakeFiles\saiGeNew.dir\user\debug.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\user
 
 build CMakeFiles/saiGeNew.dir/user/timer.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/user/timer.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\user\timer.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\user
 
 build CMakeFiles/saiGeNew.dir/main.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/main.c || cmake_object_order_depends_target_saiGeNew
   DEP_FILE = CMakeFiles\saiGeNew.dir\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user -ID:/biancheng/Keil_v5/ARM/Ac5/include
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
   OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir
+
+build CMakeFiles/saiGeNew.dir/user/debug.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/user/debug.c || cmake_object_order_depends_target_saiGeNew
+  DEP_FILE = CMakeFiles\saiGeNew.dir\user\debug.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
+  OBJECT_DIR = CMakeFiles\saiGeNew.dir
+  OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\user
+
+build CMakeFiles/saiGeNew.dir/user/onewire.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C$:/Users/zhihao/Desktop/workcode/saiGeNew/user/onewire.c || cmake_object_order_depends_target_saiGeNew
+  DEP_FILE = CMakeFiles\saiGeNew.dir\user\onewire.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis -IC:/Users/zhihao/Desktop/workcode/saiGeNew/.cmsis/include -IC:/Users/zhihao/Desktop/workcode/saiGeNew/core -IC:/Users/zhihao/Desktop/workcode/saiGeNew/Libraries/inc -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTE/_CW32F003 -IC:/Users/zhihao/Desktop/workcode/saiGeNew/RTT -IC:/Users/zhihao/Desktop/workcode/saiGeNew/user
+  OBJECT_DIR = CMakeFiles\saiGeNew.dir
+  OBJECT_FILE_DIR = CMakeFiles\saiGeNew.dir\user
 
 
 # =============================================================================
@@ -260,7 +267,7 @@ build CMakeFiles/saiGeNew.dir/main.c.obj: C_COMPILER__saiGeNew_unscanned_Debug C
 #############################################
 # Link the executable saiGeNew.exe
 
-build saiGeNew.exe: C_EXECUTABLE_LINKER__saiGeNew_Debug CMakeFiles/saiGeNew.dir/core/interrupts_cw32f003.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_adc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_atim.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_awt.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_btim.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_crc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_debug.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_digitalsign.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_flash.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gpio.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gtim.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_i2c.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_iwdt.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_lvd.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_pwr.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_ram.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_rcc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_spi.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_systick.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_uart.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_vc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_wwdt.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/system_cw32f003.c.obj CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT.c.obj CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT_printf.c.obj CMakeFiles/saiGeNew.dir/user/common.c.obj CMakeFiles/saiGeNew.dir/user/debug.c.obj CMakeFiles/saiGeNew.dir/user/timer.c.obj CMakeFiles/saiGeNew.dir/main.c.obj
+build saiGeNew.exe: C_EXECUTABLE_LINKER__saiGeNew_Debug CMakeFiles/saiGeNew.dir/core/interrupts_cw32f003.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_adc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_atim.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_awt.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_btim.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_crc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_debug.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_digitalsign.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_flash.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gpio.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_gtim.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_i2c.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_iwdt.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_lvd.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_pwr.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_ram.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_rcc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_spi.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_systick.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_uart.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_vc.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/cw32f003_wwdt.c.obj CMakeFiles/saiGeNew.dir/Libraries/src/system_cw32f003.c.obj CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT.c.obj CMakeFiles/saiGeNew.dir/RTT/SEGGER_RTT_printf.c.obj CMakeFiles/saiGeNew.dir/user/common.c.obj CMakeFiles/saiGeNew.dir/user/timer.c.obj CMakeFiles/saiGeNew.dir/main.c.obj CMakeFiles/saiGeNew.dir/user/debug.c.obj CMakeFiles/saiGeNew.dir/user/onewire.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\saiGeNew.dir
@@ -275,7 +282,7 @@ build saiGeNew.exe: C_EXECUTABLE_LINKER__saiGeNew_Debug CMakeFiles/saiGeNew.dir/
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\zhihao\Desktop\workcode\saiGeNew\cmake-build-debug && "D:\biancheng\CLion 2025.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\zhihao\Desktop\workcode\saiGeNew\cmake-build-debug && "D:\biancheng\CLion 2025.1.3\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -286,7 +293,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\zhihao\Desktop\workcode\saiGeNew\cmake-build-debug && "D:\biancheng\CLion 2025.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\zhihao\Desktop\workcode\saiGeNew -BC:\Users\zhihao\Desktop\workcode\saiGeNew\cmake-build-debug"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\zhihao\Desktop\workcode\saiGeNew\cmake-build-debug && "D:\biancheng\CLion 2025.1.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\zhihao\Desktop\workcode\saiGeNew -BC:\Users\zhihao\Desktop\workcode\saiGeNew\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -322,14 +329,14 @@ build all: phony saiGeNew.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/zhihao/Desktop/workcode/saiGeNew/CMakeLists.txt CMakeCache.txt CMakeFiles/3.31.6/CMakeCCompiler.cmake CMakeFiles/3.31.6/CMakeRCCompiler.cmake CMakeFiles/3.31.6/CMakeSystem.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeGenericSystem.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeRCInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-Initialize.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-windres.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/zhihao/Desktop/workcode/saiGeNew/CMakeLists.txt CMakeCache.txt CMakeFiles/3.31.6/CMakeCCompiler.cmake CMakeFiles/3.31.6/CMakeRCCompiler.cmake CMakeFiles/3.31.6/CMakeSystem.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeGenericSystem.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeRCInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-Initialize.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-windres.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/WindowsPaths.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/zhihao/Desktop/workcode/saiGeNew/CMakeLists.txt CMakeCache.txt CMakeFiles/3.31.6/CMakeCCompiler.cmake CMakeFiles/3.31.6/CMakeRCCompiler.cmake CMakeFiles/3.31.6/CMakeSystem.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeGenericSystem.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeRCInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-Initialize.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-windres.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows.cmake D$:/biancheng/CLion$ 2025.1/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/WindowsPaths.cmake: phony
+build C$:/Users/zhihao/Desktop/workcode/saiGeNew/CMakeLists.txt CMakeCache.txt CMakeFiles/3.31.6/CMakeCCompiler.cmake CMakeFiles/3.31.6/CMakeRCCompiler.cmake CMakeFiles/3.31.6/CMakeSystem.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeGenericSystem.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeRCInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU-C.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-GNU.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-Initialize.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows-windres.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/Windows.cmake D$:/biancheng/CLion$ 2025.1.3/bin/cmake/win/x64/share/cmake-3.31/Modules/Platform/WindowsPaths.cmake: phony
 
 
 #############################################

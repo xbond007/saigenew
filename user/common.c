@@ -1,321 +1,255 @@
+// common.c - 通用功能实现文件
+// 包含GPIO初始化、1-Wire通信、灯光、ABS、NFC、ACC等任务逻辑
 #include "common.h"
-extern uint16_t timetimes;
-#define TOSC32     16
-#define BUFNUMB    1048
-#define start_addr 0x08002800 // code 10k
-uint8_t usart1_tx[46] = {0};
-uint8_t rx_nub, tx_nub1, tx_nub2, time_out, recv_flag, tx_over;
-uint8_t lock_answer = 0, time_out;
-uint16_t sum, rx_numb;
-uint8_t code_buf[BUFNUMB] = {0};
-typedef union {
-    uint32_t Word;
-    struct
-    {
-        uint8_t Rf_tim;
-        u8 Rf_high;
-        u8 Rf_bit;
-        u8 Rf_byte;
-    } Bytes;
-} RF_REG;
-__align(4) RF_REG RF_reg = {0};
-
-uint8_t yxt_tx[12] = {0};
-uint8_t step2      = 0;
-
-uint8_t *alm_send(uint8_t len)
+#include "cw32f003_rcc.h"
+#include "timer.h"
+#include "debug.h"
+#include "SEGGER_RTT.h"
+#include <string.h>
+// #include "onewire.h"
+// #include "cw32f003_uart.h"
+#include "cw32f003_btim.h"
+#include "cw32f003_adc.h"
+static uint16_t tick_50us_counter     = 0; // 设置软件计数调度
+static volatile uint8_t acc_state     = 0; // 0=关，1=开 开机状态
+static volatile uint8_t acc_adc_state = 0; // 0=关，1=开 开机状态
+/**
+ * @brief GP初始化函数
+ * 使能GPIOA/B/C时钟，并初始化各外设相关引脚
+ */
+void gpio_init(void)
 {
-    static uint8_t bit = 0, byte = 0;
-    static uint16_t tim = 0;
-    static uint8_t *p;
-    p = yxt_tx;
+    __RCC_GPIOA_CLK_ENABLE();
+    __RCC_GPIOB_CLK_ENABLE();
+    __RCC_GPIOC_CLK_ENABLE();
 
-    switch (step2) {
-        case 0: // ��ʼ��Ĭ�ڣ����ͳ���һ��ʱ��
-        {
-            OUT_YXT = 0; // ����͵�ƽ
-            tim++;
-            if (tim > TOSC32 * 60) {
-                tim = 0;
-                step2++;
-            }
-            break;
-        }
+    GPIO_InitTypeDef init = {0};
 
-        case 1: // ��ʼ����
-        {
-            OUT_YXT = 1; // ����ߵ�ƽ
-            tim++;
-            if (tim > TOSC32 * 5) {
-                tim = 0;
-                step2++;
-            }
-            break;
-        }
+    // 1. 灯光引脚（输出）
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = LIGHT_PIN;
+    GPIO_Init(LIGHT_PORT, &init);
+    GPIO_WritePin(LIGHT_PORT,LIGHT_PIN,GPIO_Pin_RESET);
 
-        case 2: // ������׶Σ���λ�ȷ���
-        {
-            uint8_t current_bit = (p[byte] >> bit) & 0x01;
+    // 2. ABS引脚（输出）
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = ABS_PIN;
+    GPIO_Init(ABS_PORT, &init);
 
-            if (current_bit) {
-                if (tim < TOSC32)
-                    OUT_YXT = 0;
-                else if (tim < TOSC32 * 3)
-                    OUT_YXT = 1;
-                else {
-                    tim = 0;
-                    bit++;
-                    if (bit > 7) {
-                        bit = 0;
-                        byte++;
-                    }
+    // 3. 1-Wire引脚（输出）
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = ONEWIRE_PIN;
+    GPIO_Init(ONEWIRE_PORT, &init);
+
+    // 4. ACC输出引脚（输出）——注意这里要用ACC_OUT_PIN和ACC_OUT_PORT
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = ACC_OUT_PIN;
+    GPIO_Init(ACC_OUT_PORT, &init);
+    GPIO_WritePin(ACC_OUT_PORT, ACC_OUT_PIN, GPIO_Pin_RESET);
+
+    // 5. 485发送使能（输出）
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = EN485_TX_PIN;
+    GPIO_Init(EN485_TX_PORT, &init);
+
+    // 6. 485接收使能（输出）
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = EN485_RX_PIN;
+    GPIO_Init(EN485_RX_PORT, &init);
+
+    // 7. 485接收使能引脚（RE），默认拉低使能接收
+    init.Mode = GPIO_MODE_OUTPUT_PP;
+    init.Pins = EN485_RE_PIN;
+    GPIO_Init(EN485_RE_PORT, &init);
+    GPIO_WritePin(EN485_RE_PORT, EN485_RE_PIN, GPIO_Pin_RESET); // 默认使能接收
+
+    // 7. NFC引脚（输入）
+    init.Mode = GPIO_MODE_INPUT;
+    init.Pins = NFC_PIN;
+    GPIO_Init(NFC_PORT, &init);
+    GPIO_WritePin(NFC_PORT, NFC_PIN, GPIO_Pin_RESET);
+
+}
+
+
+/**
+ * @brief ABS任务，周期性控制ABS引脚
+ */
+void abs_task(void)
+{
+    // uint32_t t = timer_ms() % 2000; // 2秒周期
+    // if (t < 500 || t >= 1500) {
+    //     GPIO_WritePin(ABS_PORT, ABS_PIN, GPIO_Pin_RESET); // ABS灭
+    // } else {
+    //     GPIO_WritePin(ABS_PORT, ABS_PIN, GPIO_Pin_SET); // ABS亮
+    // }
+}
+
+/**
+ * @brief NFC任务，检测NFC引脚低电平，置位pc1_state
+ */
+void nfc_task(void)
+{
+    static uint8_t low_cnt   = 0;
+    static uint8_t high_cnt  = 0;
+    static uint8_t triggered = 0;
+
+    GPIO_PinState pin = GPIO_ReadPin(NFC_PORT, NFC_PIN);
+
+    if (pin == GPIO_Pin_RESET) {
+        high_cnt = 0;
+
+        if (!triggered) {
+            if (++low_cnt >= 5) {
+                triggered = 1;
+                low_cnt   = 0;
+
+                acc_state = !acc_state;
+                // SEGGER_RTT_printf(0, "NFC run : %d\n", acc_state);
+
+                if (acc_state) {
+                    GPIO_WritePin(ACC_OUT_PORT, ACC_OUT_PIN, GPIO_Pin_SET); // 开
+                } else {
+                    GPIO_WritePin(ACC_OUT_PORT, ACC_OUT_PIN, GPIO_Pin_RESET); // 关
                 }
-            } else {
-                if (tim < TOSC32 * 2)
-                    OUT_YXT = 0;
-                else if (tim < TOSC32 * 3)
-                    OUT_YXT = 1;
-                else {
-                    tim = 0;
-                    bit++;
-                    if (bit > 7) {
-                        bit = 0;
-                        byte++;
-                    }
-                }
             }
-
-            if (byte == len) {
-                tim  = 0;
-                bit  = 0;
-                byte = 0;
-                step2++;
-                OUT_YXT = 0; // ��������
-            }
-
-            break;
         }
-
-        default:
-            break;
-    }
-
-    return &step2;
-}
-
-u8 NFC_read = 0;
-
-/**
- * @brief ÿ 50us ���һ�� NFC �͵�ƽ�����źţ������� bit ��
- */
-void com_task_50us(void)
-{
-    static u8 data[14] __attribute__((aligned(4)));
-    static u8 check = 0;
-    static u32 rf_io;
-
-    if (IS_NFC_LOW != rf_io) {
-        rf_io = IS_NFC_LOW;
-        if (IS_NFC_LOW == 0) {
-            if (RF_reg.Bytes.Rf_tim == 65 || RF_reg.Bytes.Rf_tim < 25 || RF_reg.Bytes.Rf_high < 5) {
-                RF_reg.Word = 0;
-                check       = 0;
-                return;
+    } else {
+        low_cnt = 0;
+        if (triggered) {
+            if (++high_cnt >= 5) {
+                triggered = 0; // 允许下一次刷卡
+                high_cnt  = 0;
             }
-
-            RF_reg.Bytes.Rf_tim -= RF_reg.Bytes.Rf_high;
-            if (RF_reg.Bytes.Rf_tim < 5) {
-                RF_reg.Word = 0;
-                check       = 0;
-                return;
-            }
-
-            data[RF_reg.Bytes.Rf_byte] <<= 1;
-            if (RF_reg.Bytes.Rf_tim > RF_reg.Bytes.Rf_high) {
-                data[RF_reg.Bytes.Rf_byte] |= 1;
-            }
-
-            RF_reg.Bytes.Rf_tim = 0;
-            RF_reg.Bytes.Rf_bit++;
-
-            if (RF_reg.Bytes.Rf_bit > 10) {
-                NFC_read = 1;
-            } else if ((RF_reg.Bytes.Rf_bit & 7) == 0) {
-                check ^= data[RF_reg.Bytes.Rf_byte];
-                RF_reg.Bytes.Rf_byte++;
-            }
-
-        } else {
-            RF_reg.Bytes.Rf_high = RF_reg.Bytes.Rf_tim;
-        }
-    } else if (RF_reg.Bytes.Rf_tim < 65) {
-        RF_reg.Bytes.Rf_tim++;
-    }
-}
-
-u8 NFC_read = 0;
-u8 recv_over = 0;
-extern u16 rx_numb;
-extern u16 sum;
-extern u8 usart1_tx[46];
-extern u8 tx_nub1, tx_nub2;
-extern u8 time_out;
-extern u8 code_buf[BUFNUMB];
-
-/**
- * @brief ��ʼ�� UART1��ʹ�� CW32 �ٷ���ṹ��
- */
-void usartInit(void)
-{
-    RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOA, ENABLE);
-    RCC_APB1PeriphClockCmd(RCC_APB1ENR_UART1, ENABLE);
-
-    GPIO_InitTypeDef gpio = {0};
-
-    // PA9: TX
-    gpio.Pins = GPIO_PIN_9;
-    gpio.Mode = GPIO_MODE_AF_PP;
-    GPIO_Init(CW_GPIOA, &gpio);
-
-    // PA10: RX
-    gpio.Pins = GPIO_PIN_10;
-    gpio.Mode = GPIO_MODE_INPUT;
-    GPIO_Init(CW_GPIOA, &gpio);
-
-    // ��ʼ�� UART
-    USART_InitTypeDef uart = {0};
-    uart.USART_BaudRate = 9600;
-    uart.USART_Over     = USART_Over_16;
-    uart.USART_Source   = USART_Source_PCLK;
-    uart.USART_UclkFreq = 8000000;  // Ĭ��ʹ�� 8MHz UCLK
-    uart.USART_StartBit = USART_StartBit_FE;
-    uart.USART_StopBits = USART_StopBits_1;
-    uart.USART_Parity   = USART_Parity_No;
-    uart.USART_Mode     = USART_Mode_Tx | USART_Mode_Rx;
-    uart.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-
-    USART_Init(CW_UART1, &uart);
-    USART_DMACmd(CW_UART1, USART_DMAReq_Rx, ENABLE);
-    USART_ITConfig(CW_UART1, USART_IT_RC, ENABLE);
-    USART_Cmd(CW_UART1, ENABLE);
-
-    // NVIC ����
-    NVIC_InitTypeDef nvic = {0};
-    nvic.NVIC_IRQChannel = UART1_IRQn;
-    nvic.NVIC_IRQChannelPriority = 0;
-    NVIC_Init(&nvic);
-}
-
-/**
- * @brief ��ʼ�� DMA ����ͨ����UART1 RX��
- */
-void DMA_INIT(void)
-{
-    RCC_AHBPeriphClockCmd(RCC_AHBENR_DMA, ENABLE);
-
-    DMA_InitTypeDef dma = {0};
-    dma.DMA_DIR = DMA_DIR_PeripheralSRC;
-    dma.DMA_M2M = DMA_M2M_Disable;
-    dma.DMA_BufferSize = BUFNUMB;
-    dma.DMA_MemoryBaseAddr = (u32)code_buf;
-    dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-    dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
-    dma.DMA_Mode = DMA_Mode_Normal;
-    dma.DMA_PeripheralBaseAddr = (u32)&CW_UART1->DATAR;
-    dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
-    dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-    dma.DMA_Priority = DMA_Priority_High;
-
-    DMA_Init(CW_DMA1_Channel5, &dma);
-    DMA_Cmd(CW_DMA1_Channel5, ENABLE);
-}
-
-/**
- * @brief UART1 �жϷ�������IDLE��TC������
- */
-void UART1_IRQHandler(void)
-{
-    if (USART_GetITStatus(CW_UART1, USART_IT_RC) != RESET)
-    {
-        time_out = 0;
-        DMA_Cmd(CW_DMA1_Channel5, DISABLE);
-        rx_numb = BUFNUMB - CW_DMA1_Channel5->CNTR;
-        recv_over = 1;
-        CW_UART1->STATR;
-        CW_UART1->DATAR;
-        CW_DMA1->INTFCR = 0x0FFFFFFF;
-        CW_DMA1_Channel5->CNTR = BUFNUMB;
-        DMA_Cmd(CW_DMA1_Channel5, ENABLE);
-    }
-
-    if (USART_GetITStatus(CW_UART1, USART_IT_TC) != RESET)
-    {
-        USART_ClearITPendingBit(CW_UART1, USART_IT_TC);
-        if (tx_nub1 < tx_nub2)
-        {
-            tx_nub1++;
-            USART_SendData(CW_UART1, usart1_tx[tx_nub1]);
-        }
-        else
-        {
-            EN485_L;
         }
     }
 }
-
-
-void send_order()
+/**
+ * @brief ACC任务，根据acc_state和ACC检测引脚控制light闪烁输出
+ */
+void acc_task(void)
 {
-    uint8_t i;
-    sum           = 0;
-    usart1_tx[0]  = 0x06;
-    usart1_tx[1]  = 0x10;
-    usart1_tx[2]  = 0xB1;
-    usart1_tx[3]  = 0x00;
-    usart1_tx[4]  = 0x00;
-    usart1_tx[5]  = 0x12;
-    usart1_tx[6]  = 0x24;
-    usart1_tx[7]  = 0x00;
-    usart1_tx[8]  = 0x00;
-    usart1_tx[9]  = 0x00;
-    usart1_tx[10] = 0x21;
-    usart1_tx[11] = 0x00;
-    usart1_tx[12] = 0x3C;
-    usart1_tx[13] = 0x00;
-    usart1_tx[14] = 0x00;
-    usart1_tx[15] = 0x00;
-    usart1_tx[16] = 0x00;
-    usart1_tx[17] = 0x00;
-    usart1_tx[18] = 0x00;
-    usart1_tx[19] = 0x02;
-    usart1_tx[20] = 0x02;
-    usart1_tx[21] = 0x00;
-    usart1_tx[22] = 0x00;
-    usart1_tx[23] = 0x02;
-    usart1_tx[24] = 0xDB;
-    usart1_tx[25] = 0x00;
-    usart1_tx[26] = 0x64;
-    usart1_tx[27] = 0x00;
-    usart1_tx[28] = 0x00;
-    usart1_tx[29] = 0x00;
-    usart1_tx[30] = 0x00;
-    usart1_tx[31] = 0x00;
-    usart1_tx[32] = 0x00;
-    usart1_tx[33] = 0x0f;
-    usart1_tx[34] = 0x10;
-    usart1_tx[35] = 0x0A;
-    usart1_tx[36] = 0x00;
-    usart1_tx[37] = 0x00;
-    usart1_tx[38] = 0x1E;
-    usart1_tx[39] = 0x00;
-    usart1_tx[40] = 0x00;
-    usart1_tx[41] = 0x02;
-    usart1_tx[42] = 0x00;
-    usart1_tx[43] = 0x89;
-    usart1_tx[44] = 0x5c;
-    EN485_H;
-    tx_nub1 = 0;
-    tx_nub2 = 44;
-    USART_ITConfig(USART1, USART_IT_TC, ENABLE);
-    USART_SendData(USART1, usart1_tx[tx_nub1]);
+    static uint8_t led_on        = 0;
+    uint8_t acc_voltage_detected = acc_det_check_voltage();
+    // SEGGER_RTT_printf(0, "[ACC] ACC_DET: %d\n", acc_voltage_detected);
+    if (acc_voltage_detected) {
+        // 检测到电压说明NFC已验证通过，直接开机
+        acc_state = 1;
+        led_on = !led_on; // 翻转状态
+        GPIO_WritePin(LIGHT_PORT, LIGHT_PIN, led_on ? GPIO_Pin_SET : GPIO_Pin_RESET);
+    } else {
+        // 无电压，关机
+        led_on    = 0;
+        acc_state = 0;
+        GPIO_WritePin(LIGHT_PORT, LIGHT_PIN, GPIO_Pin_RESET);
+        GPIO_WritePin(ACC_OUT_PORT, ACC_OUT_PIN, GPIO_Pin_RESET); // 关
+
+    }
+    // SEGGER_RTT_printf(0, "[ACC] ACC_OUT: %d\n", GPIO_ReadPin(ACC_OUT_PORT, ACC_OUT_PIN));
+}
+
+void user_tasks_50us(void)
+{
+
+    tick_50us_counter++;
+    nfc_task();
+    if (tick_50us_counter >= 15000) { // 15000 * 50us = 0.75秒
+        tick_50us_counter = 0;
+        acc_task();
+    }
+}
+
+// ... existing code ...
+
+/**
+ * @brief 初始化ADC
+ * @note 配置ADC采集ACC_DET引脚的电压
+ */
+void adc_init(void)
+{
+    ADC_InitTypeDef ADC_InitStructure;
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    // 使能ADC和GPIO时钟
+    __RCC_ADC_CLK_ENABLE();
+    __RCC_GPIOA_CLK_ENABLE();
+
+    // 配置PA7为模拟输入
+    GPIO_InitStructure.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStructure.Pins = ACC_DET_PIN;
+    GPIO_Init(ACC_DET_PORT, &GPIO_InitStructure);
+
+    // 配置ADC
+    ADC_StructInit(&ADC_InitStructure);
+    ADC_InitStructure.ADC_OpMode     = ADC_SingleChOneMode; // 单通道单次转换模式
+    ADC_InitStructure.ADC_ClkDiv     = ADC_Clk_Div8;        // ADC时钟分频
+    ADC_InitStructure.ADC_SampleTime = ADC_SampTime10Clk;   // 采样时间
+    ADC_InitStructure.ADC_VrefSel    = ADC_Vref_VDD;        // 参考电压为VDD
+    ADC_InitStructure.ADC_InBufEn    = ADC_BufEnable;       // 使能输入缓冲
+    ADC_InitStructure.ADC_TsEn       = ADC_TsDisable;       // 禁用温度传感器
+    ADC_InitStructure.ADC_Align      = ADC_AlignRight;      // 右对齐
+    ADC_InitStructure.ADC_AccEn      = ADC_AccDisable;      // 禁用累加
+    ADC_Init(&ADC_InitStructure);
+
+    // 配置单通道转换
+    ADC_SingleChTypeDef ADC_SingleChStruct;
+    ADC_SingleChStruct.ADC_Chmux      = ADC_CHANNEL_ACC_DET; // 通道4 (PA7)
+    ADC_SingleChStruct.ADC_DiscardEn  = ADC_DiscardNull;     // 不丢弃数据
+    ADC_SingleChStruct.ADC_InitStruct = ADC_InitStructure;   // 使用上面的配置
+    ADC_SingleChOneModeCfg(&ADC_SingleChStruct);             // 配置单通道单次转换
+
+    // 使能ADC
+    ADC_Enable();
+}
+
+/**
+ * @brief 读取ADC值
+ * @return ADC原始值（0-4095）
+ */
+uint16_t adc_read_acc_det(void)
+{
+    uint16_t adc_value = 0;
+
+    // 启动ADC转换
+    ADC_SoftwareStartConvCmd(ENABLE);
+
+    // 等待转换完成
+    while (!ADC_GetITStatus(ADC_IT_EOC));
+
+    // 读取ADC值
+    adc_value = ADC_GetConversionValue();
+
+    // 清除中断标志
+    ADC_ClearITPendingBit(ADC_IT_EOC);
+
+    return adc_value;
+}
+
+/**
+ * @brief 将ADC值转换为电压（mV）
+ * @param adc_value ADC原始值
+ * @return 电压值（mV）
+ */
+uint16_t adc_to_voltage_mv(uint16_t adc_value)
+{
+    // 假设VDD为3.3V，12位ADC
+    // 电压 = (ADC值 / 4095) * 3300mV
+    return (uint16_t)((adc_value * 3300) / 4095);
+}
+
+/**
+ * @brief 检测ACC_DET引脚电压状态
+ * @return 1:有电压, 0:无电压
+ */
+uint8_t acc_det_check_voltage(void)
+{
+    uint16_t adc_value  = adc_read_acc_det();
+    uint16_t voltage_mv = adc_to_voltage_mv(adc_value);
+    // SEGGER_RTT_printf(0, "[ADC] ACC_DET: ADC=%d, Voltage=%dmV\n", adc_value, voltage_mv);
+    // 根据电压阈值判断状态
+    if (voltage_mv > ADC_VOLTAGE_THRESHOLD) {
+        return 1; // 有电压
+    } else {
+        return 0;                                                 // 无电压
+    }
 }

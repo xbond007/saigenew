@@ -1,53 +1,54 @@
 #ifndef COMMON_H
 #define COMMON_H
+
 #include "cw32f003.h"
-#include "stdbool.h"
-#include "SEGGER_RTT.h"
 #include "cw32f003_gpio.h"
-#include "type.h"
-typedef enum {
-    lock = 1,
-    unlock,
-} LOCK_T;
-typedef struct
-{
-    uint8_t filename[20];
-    uint8_t filelenbuf[10];
-    uint32_t FileLen;
-    uint8_t transmission_start;
-    uint8_t end_flag;
-    uint32_t offset;
-} FILE_T;
+#define LIGHT_PORT    CW_GPIOC
+#define LIGHT_PIN     GPIO_PIN_0
 
-// 灯光输出检测e
-#define OUT_LIGHT CW_GPIOC->BSRR = GPIO_PIN_0
-// ABS 输出检测
-#define OUT_ABS CW_GPIOB->BSRR = GPIO_PIN_4
+#define ABS_PORT      CW_GPIOB
+#define ABS_PIN       GPIO_PIN_4
 
-// 一线通输出检测
-#define OUT_YXT CW_GPIOB->BSRR = GPIO_PIN_2
+#define ONEWIRE_PORT  CW_GPIOB
+#define ONEWIRE_PIN   GPIO_PIN_2
 
-// NFC输入检测
-#define IN_NFC ((CW_GPIOB->IDR & GPIO_PIN_5) == 0)
+#define NFC_PORT      CW_GPIOB
+#define NFC_PIN       GPIO_PIN_5
 
-// 485 控制使能
-#define EN485_TXD CW_GPIOA->BSRR = GPIO_PIN_8
-#define EN485_RXD CW_GPIOA->BRR = GPIO_PIN_8
+#define ACC_DET_PORT  CW_GPIOA
+#define ACC_DET_PIN   GPIO_PIN_7
 
-// 电门检测 输出
-#define IN_ACC_JC ((CW_GPIOA->IDR & GPIO_PIN_4) != 0)
-#define OUT_ACC   CW_GPIOC->BSRR = GPIO_PIN_4
+#define ACC_OUT_PORT  CW_GPIOC
+#define ACC_OUT_PIN   GPIO_PIN_1
 
-bool time_delay_check(uint8_t *lock, uint16_t *time_base, uint16_t deley_time);
-void usartInit(void);
-void send_c(void);
-uint8_t *alm_send(uint8_t len);
-void yxt_data_send(void);
-void DMA_INIT(void);
-void print_log(const char *sFormat, ...);
-void com_task_50us(void);
-void recv_dispose(void);
-void send_order(void);
-extern FILE_T file;
-extern uint8_t recv_over, time_out, NFC_read;
+#define EN485_TX_PORT CW_GPIOA
+#define EN485_TX_PIN  GPIO_PIN_1
+
+#define EN485_RX_PORT CW_GPIOB
+#define EN485_RX_PIN  GPIO_PIN_3
+
+#define EN485_RE_PORT CW_GPIOA
+#define EN485_RE_PIN  GPIO_PIN_4
+
+
+
+
+
+// ADC相关定义
+#define ADC_CHANNEL_ACC_DET    ADC_ExInputCH4  // PA7对应ADC通道4
+#define ADC_SAMPLE_TIME        ADC_SampTime10Clk  // 10个时钟周期采样时间
+#define ADC_VOLTAGE_THRESHOLD  700  // 电压阈值（mV），根据实际情况调整
+
+// ADC相关函数声明
+void adc_init(void);
+uint16_t adc_read_acc_det(void);
+uint16_t adc_to_voltage_mv(uint16_t adc_value);
+uint8_t acc_det_check_voltage(void);
+
+
+void gpio_init(void);
+void abs_task(void);
+void nfc_task(void);
+void acc_task(void);
+void user_tasks_50us(void);
 #endif
